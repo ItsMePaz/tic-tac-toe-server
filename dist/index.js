@@ -34,7 +34,6 @@ const io = new Server(server, {
 });
 let nameArray = [];
 let playingArray = [];
-let playerCombArray = [];
 io.on("connection", (socket) => {
     console.log(`User Connected: ${socket.id}`);
     /*  socket.on("send_message", (data: any) => {
@@ -42,8 +41,6 @@ io.on("connection", (socket) => {
     }); */
     socket.on("send_name", (e) => {
         let name = e.name;
-        let value1 = e.button1;
-        playerCombArray.push(value1);
         nameArray.push(name);
         if (nameArray.length >= 2) {
             let player1 = {
@@ -70,7 +67,14 @@ io.on("connection", (socket) => {
         }
         console.log(nameArray);
         console.log(playingArray);
-        console.log(playerCombArray);
+    });
+    socket.on("values", (e) => {
+        let button1 = e.button1;
+        let buttonObj = {
+            b1: button1,
+        };
+        console.log(button1);
+        io.emit("values", { buttonObj });
     });
 });
 server.listen(3001, () => {

@@ -74,6 +74,31 @@ io.on("connection", (socket: any) => {
     console.log(nameArray);
     console.log(playingArray);
   });
+
+  socket.on("values", (e: any) => {
+    let buttonObj = {
+      b1: e.button1,
+      b2: e.button2,
+      b3: e.button3,
+      b4: e.button4,
+      b5: e.button5,
+      b6: e.button6,
+      b7: e.button7,
+      b8: e.button8,
+      b9: e.button9,
+      b1Status: e.button1State,
+      b2Status: e.button2State,
+      b3Status: e.button3State,
+      b4Status: e.button4State,
+      b5Status: e.button5State,
+      b6Status: e.button6State,
+      b7Status: e.button7State,
+      b8Status: e.button8State,
+      b9Status: e.button9State,
+    };
+
+    io.emit("values", { buttonObj });
+  });
 });
 
 server.listen(3001, () => {
