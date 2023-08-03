@@ -68,13 +68,42 @@ io.on("connection", (socket) => {
         console.log(nameArray);
         console.log(playingArray);
     });
-    socket.on("values", (e) => {
-        let button1 = e.button1;
-        let buttonObj = {
-            b1: button1,
-        };
-        console.log(button1);
-        io.emit("values", { buttonObj });
+    socket.on("button1", (e) => {
+        let buttonObj = { b1: e.button1, b1Status: e.button1State };
+        console.log(buttonObj);
+        io.emit("button1", { buttonObj });
+    });
+    socket.on("button2", (e) => {
+        let buttonObj = { b2: e.button2, b2Status: e.button2State };
+        io.emit("button2", { buttonObj });
+    });
+    socket.on("button3", (e) => {
+        let buttonObj = { b3: e.button3, b3Status: e.button3State };
+        io.emit("button3", { buttonObj });
+    });
+    socket.on("button4", (e) => {
+        let buttonObj = { b4: e.button4, b4Status: e.button4State };
+        io.emit("button4", { buttonObj });
+    });
+    socket.on("button5", (e) => {
+        let buttonObj = { b5: e.button5, b5Status: e.button5State };
+        io.emit("button5", { buttonObj });
+    });
+    socket.on("button6", (e) => {
+        let buttonObj = { b6: e.button6, b6Status: e.button6State };
+        io.emit("button6", { buttonObj });
+    });
+    socket.on("button7", (e) => {
+        let buttonObj = { b7: e.button7, b7Status: e.button7State };
+        io.emit("button7", { buttonObj });
+    });
+    socket.on("button8", (e) => {
+        let buttonObj = { b8: e.button8, b8Status: e.button8State };
+        io.emit("button8", { buttonObj });
+    });
+    socket.on("button9", (e) => {
+        let buttonObj = { b9: e.button9, b9Status: e.button9State };
+        io.emit("button9", { buttonObj });
     });
 });
 server.listen(3001, () => {

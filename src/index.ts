@@ -75,29 +75,60 @@ io.on("connection", (socket: any) => {
     console.log(playingArray);
   });
 
-  socket.on("values", (e: any) => {
+  socket.on("turn_signal", (e: any) => {
+    let signalObj = { turnSignal: e.turnSignal };
+    io.emit("turn_signal", { signalObj });
+    console.log(signalObj.turnSignal);
+  });
+
+  socket.on("button1", (e: any) => {
     let buttonObj = {
       b1: e.button1,
-      b2: e.button2,
-      b3: e.button3,
-      b4: e.button4,
-      b5: e.button5,
-      b6: e.button6,
-      b7: e.button7,
-      b8: e.button8,
-      b9: e.button9,
       b1Status: e.button1State,
-      b2Status: e.button2State,
-      b3Status: e.button3State,
-      b4Status: e.button4State,
-      b5Status: e.button5State,
-      b6Status: e.button6State,
-      b7Status: e.button7State,
-      b8Status: e.button8State,
-      b9Status: e.button9State,
+      isPlayerTurn: e.isPlayerTurn,
     };
+    console.log(buttonObj);
+    io.emit("button1", { buttonObj });
+  });
 
-    io.emit("values", { buttonObj });
+  socket.on("button2", (e: any) => {
+    let buttonObj = { b2: e.button2, b2Status: e.button2State };
+    io.emit("button2", { buttonObj });
+  });
+
+  socket.on("button3", (e: any) => {
+    let buttonObj = { b3: e.button3, b3Status: e.button3State };
+    io.emit("button3", { buttonObj });
+  });
+
+  socket.on("button4", (e: any) => {
+    let buttonObj = { b4: e.button4, b4Status: e.button4State };
+    io.emit("button4", { buttonObj });
+  });
+
+  socket.on("button5", (e: any) => {
+    let buttonObj = { b5: e.button5, b5Status: e.button5State };
+    io.emit("button5", { buttonObj });
+  });
+
+  socket.on("button6", (e: any) => {
+    let buttonObj = { b6: e.button6, b6Status: e.button6State };
+    io.emit("button6", { buttonObj });
+  });
+
+  socket.on("button7", (e: any) => {
+    let buttonObj = { b7: e.button7, b7Status: e.button7State };
+    io.emit("button7", { buttonObj });
+  });
+
+  socket.on("button8", (e: any) => {
+    let buttonObj = { b8: e.button8, b8Status: e.button8State };
+    io.emit("button8", { buttonObj });
+  });
+
+  socket.on("button9", (e: any) => {
+    let buttonObj = { b9: e.button9, b9Status: e.button9State };
+    io.emit("button9", { buttonObj });
   });
 });
 
